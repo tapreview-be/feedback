@@ -352,8 +352,10 @@
       <label class="field-label" for="feedback-name">Naam <span class="required">*</span></label>
       <input type="text" id="feedback-name" class="contact-input" placeholder="Uw naam">
  
-      <label class="field-label" for="feedback-contact">E-mailadres <span class="required">*</span></label>
-      <input type="email" id="feedback-contact" class="contact-input" placeholder="uw@email.be">
+      <div id="email-field-wrap">
+        <label class="field-label" for="feedback-contact">E-mailadres <span class="required">*</span></label>
+        <input type="email" id="feedback-contact" class="contact-input" placeholder="uw@email.be">
+      </div>
  
       <label class="field-label" for="feedback-subject">Onderwerp <span class="required">*</span></label>
       <select id="feedback-subject" class="contact-input select-input">
@@ -425,6 +427,11 @@
     };
     logoEl.src = logoUrl;
     logoEl.style.display = 'block';
+  }
+ 
+  // Als deze klant WhatsApp gebruikt, is een e-mailadres niet nodig (WhatsApp toont de klant al automatisch)
+  if (explicitWhatsapp) {
+    document.getElementById('email-field-wrap').style.display = 'none';
   }
  
   let currentRating = null;
@@ -506,17 +513,17 @@
     const subjectChoice = subjectEl.value;
     const text = textEl.value.trim();
  
-    // Validatie: alle velden verplicht, e-mail moet geldig formaat hebben
+    // Validatie: alle velden verplicht, e-mail moet geldig formaat hebben (behalve bij WhatsApp-klanten, daar is e-mail niet nodig)
     [nameEl, emailEl, subjectEl, textEl].forEach(el => el.classList.remove('invalid'));
     const missing = [];
     if (!name) { missing.push(nameEl); }
-    if (!contact || !isValidEmail(contact)) { missing.push(emailEl); }
+    if (!explicitWhatsapp && (!contact || !isValidEmail(contact))) { missing.push(emailEl); }
     if (!subjectChoice) { missing.push(subjectEl); }
     if (!text) { missing.push(textEl); }
  
     if (missing.length > 0) {
       missing.forEach(el => el.classList.add('invalid'));
-      errorEl.textContent = !contact || isValidEmail(contact) ? 'Vul alle verplichte velden in.' : 'Vul een geldig e-mailadres in.';
+      errorEl.textContent = (!explicitWhatsapp && contact && !isValidEmail(contact)) ? 'Vul een geldig e-mailadres in.' : 'Vul alle verplichte velden in.';
       errorEl.classList.add('visible');
       missing[0].focus();
       return;
