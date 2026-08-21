@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Klantfeedback</title>
+<title>Klantfeedback v2</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600&display=swap');
-
+ 
   :root{
     --ink:#2E2A44;
     --paper:#FFF9F2;
     --copper:#E5674A;
     --gold:#F2A65A;
   }
-
+ 
   *{box-sizing:border-box;margin:0;padding:0;}
   html,body{height:100%;}
   body{
@@ -29,7 +29,7 @@
     min-height:100vh;
     padding:20px;
   }
-
+ 
   .card{
     width:100%;
     max-width:400px;
@@ -50,14 +50,14 @@
     background:radial-gradient(circle, rgba(242,166,90,0.22), transparent 70%);
     pointer-events:none;
   }
-
+ 
   .client-logo{
     display:none;
     max-width:140px;
     max-height:60px;
     margin:0 auto 14px;
   }
-
+ 
   .logo-mark{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:22px;}
   .logo-mark.attribution{
     margin-bottom:16px;
@@ -68,7 +68,7 @@
   .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:14px;}
   .brand span{color:var(--copper);}
   .powered-by{font-size:9px;color:#B5B0A2;margin-bottom:4px;}
-
+ 
   h1{
     font-family:'Space Grotesk',sans-serif;
     font-weight:700;
@@ -79,9 +79,9 @@
     z-index:1;
   }
   .biz-name{color:var(--copper);}
-
+ 
   .subtitle{font-size:14px;color:#6B7880;margin-bottom:28px;position:relative;z-index:1;}
-
+ 
   .stars{
     display:flex;
     justify-content:center;
@@ -108,9 +108,9 @@
     45%{transform:scale(1.35);}
     100%{transform:scale(1.08);}
   }
-
+ 
   .hint{font-size:12px;color:#A6ACAF;margin-top:6px;position:relative;z-index:1;}
-
+ 
   .screen{display:none;}
   .screen.visible{
     display:block;
@@ -120,7 +120,7 @@
     from{opacity:0; transform:translateY(8px);}
     to{opacity:1; transform:translateY(0);}
   }
-
+ 
   .result-icon{
     font-size:40px;
     margin-bottom:12px;
@@ -131,9 +131,9 @@
     0%{transform:scale(0.4); opacity:0;}
     100%{transform:scale(1); opacity:1;}
   }
-
+ 
   .msg{font-size:14.5px;line-height:1.55;color:#5C6A70;margin-bottom:24px;position:relative;z-index:1;}
-
+ 
   .btn{
     display:inline-block;
     width:100%;
@@ -154,7 +154,7 @@
   }
   .btn:hover{ transform:translateY(-1px); box-shadow:0 8px 20px -4px rgba(229,103,74,0.48); }
   .btn:active{ transform:translateY(0); opacity:0.92; }
-
+ 
   .socials-row{
     display:flex;
     justify-content:center;
@@ -178,7 +178,7 @@
   .btn-secondary:hover{ background:#EBE6D8; transform:translateY(-2px); }
   .btn-secondary:active{ transform:translateY(0); }
   .btn-secondary svg{width:19px;height:19px;flex:none;}
-
+ 
   .socials-title{
     font-size:11.5px;
     letter-spacing:0.3px;
@@ -187,7 +187,7 @@
     margin-top:20px;
     margin-bottom:10px;
   }
-
+ 
   textarea{
     width:100%;
     min-height:100px;
@@ -204,7 +204,58 @@
   }
   textarea::placeholder{color:#A6ACAF;}
   textarea:focus{outline:none;border-color:var(--copper);background:#fff;}
-
+ 
+  .contact-input{
+    width:100%;
+    border:1.5px solid #E4DFD3;
+    border-radius:12px;
+    padding:13px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:14px;
+    margin-bottom:10px;
+    color:var(--ink);
+    background:#FBFAF6;
+    transition:border-color 0.15s ease, background 0.15s ease;
+    box-sizing:border-box;
+  }
+  .contact-input::placeholder{color:#A6ACAF;}
+  .contact-input:focus{outline:none;border-color:var(--copper);background:#fff;}
+  .contact-input.invalid{border-color:#E5674A;background:#FFF6F4;}
+ 
+  .field-label{
+    display:block;
+    text-align:left;
+    font-size:12px;
+    font-weight:600;
+    color:#6B7880;
+    margin-bottom:5px;
+  }
+  .required{color:var(--copper);}
+ 
+  .select-input{
+    appearance:none;
+    -webkit-appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A6ACAF' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+    padding-right:36px;
+    cursor:pointer;
+  }
+  .select-input:invalid{color:#A6ACAF;}
+ 
+  .form-error{
+    display:none;
+    text-align:left;
+    font-size:12.5px;
+    color:#E5674A;
+    background:#FFF6F4;
+    border:1px solid #F4C9BE;
+    border-radius:8px;
+    padding:9px 12px;
+    margin:2px 0 12px;
+  }
+  .form-error.visible{display:block;}
+ 
   .back-link{
     display:block;
     margin-top:18px;
@@ -218,7 +269,7 @@
     z-index:1;
   }
   .back-link:hover{color:#7C878C;}
-
+ 
   .config-warning{
     background:#FFF4E5;
     color:#8A5A20;
@@ -232,11 +283,14 @@
 </style>
 </head>
 <body>
-
+ 
+  <div style="background:#FF0000;color:#fff;text-align:center;padding:14px;font-weight:900;font-size:18px;letter-spacing:1px;">
+    VERSIE-CHECK: NIEUWE-CODE-21AUG-B
+  </div>
   <div class="card">
-
+ 
     <img id="client-logo" class="client-logo" src="" alt="Logo">
-
+ 
     <div class="logo-mark" id="tapreview-mark">
       <div class="icon-badge">
         <svg viewBox="0 0 160 160" width="70%" height="70%">
@@ -250,7 +304,7 @@
       </div>
       <div class="brand">Tap<span>Review</span></div>
     </div>
-
+ 
     <!-- SCREEN 1: rating -->
     <div id="screen-rating" class="screen visible">
       <h1>Hoe was uw ervaring<br>bij <span class="biz-name" id="biz-name-1">deze zaak</span>?</h1>
@@ -264,7 +318,7 @@
       </div>
       <p class="hint">Uw eerlijke mening helpt ons</p>
     </div>
-
+ 
     <!-- SCREEN 2: positive -> Google -->
     <div id="screen-positive" class="screen">
       <div class="result-icon">🌟</div>
@@ -274,7 +328,7 @@
       <div id="google-missing" class="config-warning" style="display:none;">
         Geen Google-link ingesteld. Voeg <code>?google=JOUW_LINK</code> toe aan de URL.
       </div>
-
+ 
       <div id="socials-block" style="display:none;">
         <p class="socials-title">Volg ons ook</p>
         <div class="socials-row">
@@ -291,26 +345,49 @@
       </div>
       <button class="back-link" onclick="resetForm()">Terug</button>
     </div>
-
+ 
     <!-- SCREEN 3: negative -> private feedback -->
     <div id="screen-negative" class="screen">
       <div class="result-icon">💬</div>
       <h1>We horen het graag zelf</h1>
-      <p class="msg">Laat hier uw feedback achter, zodat we begrijpen wat er beter kan en er meteen iets aan doen.</p>
-      <textarea id="feedback-text" placeholder="Uw feedback..."></textarea>
+      <p class="msg">Vul het formulier in, zodat we begrijpen wat er beter kan en gericht kunnen reageren.</p>
+ 
+      <label class="field-label" for="feedback-name">Naam <span class="required">*</span></label>
+      <input type="text" id="feedback-name" class="contact-input" placeholder="Uw naam">
+ 
+      <label class="field-label" for="feedback-contact">E-mailadres <span class="required">*</span></label>
+      <input type="email" id="feedback-contact" class="contact-input" placeholder="uw@email.be">
+ 
+      <label class="field-label" for="feedback-subject">Onderwerp <span class="required">*</span></label>
+      <select id="feedback-subject" class="contact-input select-input">
+        <option value="" disabled selected>Kies een onderwerp</option>
+        <option value="Bediening">Bediening / personeel</option>
+        <option value="Kwaliteit product of dienst">Kwaliteit product of dienst</option>
+        <option value="Wachttijd">Wachttijd</option>
+        <option value="Netheid">Netheid</option>
+        <option value="Prijs">Prijs</option>
+        <option value="Sfeer">Sfeer / ervaring</option>
+        <option value="Anders">Anders</option>
+      </select>
+ 
+      <label class="field-label" for="feedback-text">Bericht <span class="required">*</span></label>
+      <textarea id="feedback-text" placeholder="Vertel ons wat er beter kon..."></textarea>
+ 
+      <p id="form-error" class="form-error"></p>
+ 
       <button class="btn" id="send-btn" onclick="sendFeedback()">Verstuur feedback</button>
       <button class="back-link" onclick="resetForm()">Terug</button>
     </div>
-
+ 
     <!-- SCREEN 4: thank you after private feedback -->
     <div id="screen-thanks" class="screen">
       <div class="result-icon">🙏</div>
       <h1>Bedankt voor uw feedback</h1>
       <p class="msg">We nemen dit persoonlijk op en gaan ermee aan de slag.</p>
     </div>
-
+ 
   </div>
-
+ 
 <script>
   const params = new URLSearchParams(window.location.search);
   // ─── Standaardgegevens (pas dit aan per klant, of overschrijf via URL-parameters) ───
@@ -324,7 +401,7 @@
   const DEFAULT_EMAIL     = 'helmibenslimane14@gmail.com'; // moet overeenkomen met het e-mailadres gekoppeld aan je Web3Forms access key
   const DEFAULT_WEB3FORMS_KEY = 'd64882ca-98db-4217-ba10-6675d140876d'; // jouw eigen key — standaard gebruikt tenzij een klant een eigen key heeft via ?key=
   // ───────────────────────────────────────────────────────────────────────────────
-
+ 
   const bizName        = params.get('naam')      || DEFAULT_NAAM;
   const googleLink     = params.get('google')    || DEFAULT_GOOGLE;
   const instagramLink  = params.get('instagram') || DEFAULT_INSTAGRAM;
@@ -335,18 +412,26 @@
   const feedbackEmail  = params.get('email')     || DEFAULT_EMAIL;
   const web3formsKey   = params.get('key')       || DEFAULT_WEB3FORMS_KEY;
   const logoUrl        = params.get('logo')      || DEFAULT_LOGO;
-
+ 
   document.getElementById('biz-name-1').textContent = bizName;
-
+ 
   if (logoUrl) {
     const logoEl = document.getElementById('client-logo');
+    const fallbackMark = document.getElementById('tapreview-mark');
+    logoEl.onerror = () => {
+      // Logo kon niet geladen worden: val terug op standaardbranding i.p.v. een kapot icoontje te tonen
+      logoEl.style.display = 'none';
+      fallbackMark.style.display = 'flex';
+    };
+    logoEl.onload = () => {
+      fallbackMark.style.display = 'none';
+    };
     logoEl.src = logoUrl;
     logoEl.style.display = 'block';
-    document.getElementById('tapreview-mark').style.display = 'none';
   }
-
+ 
   let currentRating = null;
-
+ 
   const stars = document.querySelectorAll('.star-btn');
   stars.forEach(btn => {
     btn.addEventListener('mouseenter', () => highlightStars(btn.dataset.value));
@@ -361,19 +446,19 @@
       setTimeout(() => handleRating(value), 250);
     });
   });
-
+ 
   function highlightStars(value, lock) {
     stars.forEach(s => {
       if (parseInt(s.dataset.value) <= value) s.classList.add('active');
       else s.classList.remove('active');
     });
   }
-
+ 
   function showScreen(id) {
     document.querySelectorAll('.screen').forEach(s => s.classList.remove('visible'));
     document.getElementById(id).classList.add('visible');
   }
-
+ 
   function handleRating(value) {
     if (value >= 4) {
       if (googleLink) {
@@ -385,7 +470,7 @@
         document.getElementById('google-missing').style.display = 'block';
       }
       showScreen('screen-positive');
-
+ 
       let anySocial = false;
       const socialConfig = [
         ['instagram-link', instagramLink],
@@ -407,26 +492,60 @@
       showScreen('screen-negative');
     }
   }
-
+ 
+  function isValidEmail(value) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+  }
+ 
   async function sendFeedback() {
-    const text = document.getElementById('feedback-text').value.trim();
-    const feedbackText = text || '(geen tekst ingevuld)';
+    const nameEl = document.getElementById('feedback-name');
+    const emailEl = document.getElementById('feedback-contact');
+    const subjectEl = document.getElementById('feedback-subject');
+    const textEl = document.getElementById('feedback-text');
+    const errorEl = document.getElementById('form-error');
+ 
+    const name = nameEl.value.trim();
+    const contact = emailEl.value.trim();
+    const subjectChoice = subjectEl.value;
+    const text = textEl.value.trim();
+ 
+    // Validatie: alle velden verplicht, e-mail moet geldig formaat hebben
+    [nameEl, emailEl, subjectEl, textEl].forEach(el => el.classList.remove('invalid'));
+    const missing = [];
+    if (!name) { missing.push(nameEl); }
+    if (!contact || !isValidEmail(contact)) { missing.push(emailEl); }
+    if (!subjectChoice) { missing.push(subjectEl); }
+    if (!text) { missing.push(textEl); }
+ 
+    if (missing.length > 0) {
+      missing.forEach(el => el.classList.add('invalid'));
+      errorEl.textContent = !contact || isValidEmail(contact) ? 'Vul alle verplichte velden in.' : 'Vul een geldig e-mailadres in.';
+      errorEl.classList.add('visible');
+      missing[0].focus();
+      return;
+    }
+    errorEl.classList.remove('visible');
+ 
+    const feedbackText = text;
     const stars = '★'.repeat(currentRating || 0) + '☆'.repeat(5 - (currentRating || 0));
     const dateStr = new Date().toLocaleDateString('nl-BE', { day:'2-digit', month:'2-digit', year:'numeric' });
-    const subjectPlain = `Nieuwe feedback — ${bizName} — ${stars} (${currentRating || '?'}/5)`;
+    const subjectPlain = `Nieuwe feedback — ${bizName} — ${subjectChoice} — ${stars} (${currentRating || '?'}/5)`;
     const bodyPlain =
 `Bedrijf: ${bizName}
 Score: ${stars} (${currentRating || '?'}/5)
 Datum: ${dateStr}
-
+Naam klant: ${name}
+E-mail klant: ${contact}
+Onderwerp: ${subjectChoice}
+ 
 Bericht:
 ${feedbackText}
-
+ 
 —
 Ontvangen via de feedback-kaart`;
-
+ 
     const hasWeb3Forms = web3formsKey && !web3formsKey.startsWith('VUL-HIER');
-
+ 
     if (explicitWhatsapp) {
       // Deze klant koos expliciet voor WhatsApp — dit krijgt voorrang op de standaard e-mail
       window.location.href = `https://wa.me/${explicitWhatsapp}?text=${encodeURIComponent(subjectPlain)}%0A%0A${encodeURIComponent(bodyPlain)}`;
@@ -436,7 +555,7 @@ Ontvangen via de feedback-kaart`;
       const sendBtn = document.getElementById('send-btn');
       sendBtn.textContent = 'Bezig met versturen...';
       sendBtn.disabled = true;
-
+ 
       try {
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
@@ -448,7 +567,8 @@ Ontvangen via de feedback-kaart`;
             access_key: web3formsKey,
             subject: subjectPlain,
             message: bodyPlain,
-            from_name: bizName
+            from_name: bizName,
+            replyto: contact || undefined
           })
         });
         const result = await response.json().catch(() => ({ success: false }));
@@ -478,12 +598,21 @@ Ontvangen via de feedback-kaart`;
       setTimeout(() => showScreen('screen-thanks'), 400);
     }
   }
-
+ 
   function resetForm() {
     highlightStars(0);
+    document.getElementById('feedback-name').value = '';
+    document.getElementById('feedback-contact').value = '';
+    document.getElementById('feedback-subject').value = '';
+    document.getElementById('feedback-text').value = '';
+    document.getElementById('form-error').classList.remove('visible');
+    [document.getElementById('feedback-name'), document.getElementById('feedback-contact'),
+     document.getElementById('feedback-subject'), document.getElementById('feedback-text')]
+      .forEach(el => el.classList.remove('invalid'));
     showScreen('screen-rating');
   }
 </script>
-
+ 
 </body>
 </html>
+ 
